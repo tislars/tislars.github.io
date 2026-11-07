@@ -32,9 +32,17 @@ collections:
         required: false
         hint: Alleen invullen als de plaats op de verkeerde plek op de kaart staat. Vul dan ook lengtegraad in.
       - { label: Lengtegraad (optioneel), name: lng, widget: number, value_type: float, required: false }
-      - { label: Coverfoto (optioneel), name: cover, widget: string, required: false, hint: Flickr-foto-URL. Leeg = eerste foto in de tekst. }
+      - { label: Coverfoto (optioneel), name: cover, widget: flickr, required: false, hint: "Flickr-foto-URL, of kies er een met 'Kies uit Flickr'. Leeg = eerste foto in de tekst." }
       - { label: Concept, name: draft, widget: boolean, default: false, hint: Concepten staan niet op de site. }
       - label: Tekst
         name: body
         widget: markdown
-        hint: "Foto toevoegen: plak de Flickr-foto-URL (flickr.com/photos/…/1234567890) op een eigen regel. 2 of 3 foto's naast elkaar: gebruik de knop 'Foto's naast elkaar'. Maximaal 30 foto's per post."
+        default: |
+          Korte intro: waar ben je en hoe kwam je hier?
+
+          ## Wat we deden
+
+          ## Wat opviel
+
+          ## Tips
+        hint: "Schrijfvragen: wat at je, wat verraste je, wie ontmoette je, wat zou je een ander aanraden? Koppen mag je vrij aanpassen of weghalen. Foto's kiezen uit je Flickr: 'Foto uit Flickr' in het Invoegen-menu, op een lege regel (1 foto, of 2–3 naast elkaar). Of handmatig: plak de Flickr-foto-URL (flickr.com/photos/…/1234567890) op een eigen regel. 2 of 3 foto's naast elkaar: gebruik de knop 'Foto's naast elkaar'. Maximaal 30 foto's per post."

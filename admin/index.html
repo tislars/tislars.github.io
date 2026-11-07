@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Reisblog · beheer</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/@sveltia/cms@0.255.1/dist/sveltia-cms.js"></script>
+    <script>
+      // Flickr URLs on consecutive lines (no blank line between) render side by side; see src/lib/flickr.ts.
+      const FLICKR_URL = String.raw`https?:\/\/(?:www\.)?flickr\.com\/photos\/[^\s/]+\/\d+[^\s]*`;
+      const photoField = (name, label, required) => ({
+        name,
+        label,
+        widget: 'string',
+        required,
+        hint: 'Flickr-foto-URL, bijv. flickr.com/photos/…/1234567890',
+      });
+
+      CMS.registerEditorComponent({
+        id: 'photo-row',
+        label: "Foto's naast elkaar",
+        icon: 'view_column',
+        fields: [photoField('photo1', 'Foto 1', true), photoField('photo2', 'Foto 2', true), photoField('photo3', 'Foto 3 (optioneel)', false)],
+        pattern: new RegExp(`^(${FLICKR_URL})\\n(${FLICKR_URL})(?:\\n(${FLICKR_URL}))?$`, 'm'),
+        fromBlock: (match) => ({ photo1: match[1], photo2: match[2], photo3: match[3] ?? '' }),
+        toBlock: ({ photo1, photo2, photo3 }) =>
+          [photo1, photo2, photo3]
+            .map((url) => url?.trim())
+            .filter(Boolean)
+            .join('\n'),
+        toPreview: ({ photo1, photo2, photo3 }) =>
+          `<p>${[photo1, photo2, photo3].filter(Boolean).length} foto's naast elkaar</p>`,
+      });
+    </script>
+  </body>
+</html>

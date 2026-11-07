@@ -1,0 +1,40 @@
+backend:
+  name: github
+  repo: tislars/reisblog
+  branch: main
+
+site_url: https://tislars.github.io
+display_url: https://tislars.github.io
+media_folder: public/uploads
+
+collections:
+  - name: posts
+    label: Posts
+    label_singular: Post
+    folder: src/content/posts
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    summary: '{{date}} · {{place}} · {{title}}'
+    sortable_fields: [date, title, place]
+    fields:
+      - { label: Titel, name: title, widget: string }
+      - label: Datum
+        name: date
+        widget: datetime
+        time_format: false
+        format: YYYY-MM-DD
+        default: '{{now}}'
+      - { label: Plaats, name: place, widget: string, hint: "Bijv. 'Hoi An, Vietnam'. Wordt automatisch op de kaart gezet." }
+      - label: Breedtegraad (optioneel)
+        name: lat
+        widget: number
+        value_type: float
+        required: false
+        hint: Alleen invullen als de plaats op de verkeerde plek op de kaart staat. Vul dan ook lengtegraad in.
+      - { label: Lengtegraad (optioneel), name: lng, widget: number, value_type: float, required: false }
+      - { label: Coverfoto (optioneel), name: cover, widget: string, required: false, hint: Flickr-foto-URL. Leeg = eerste foto in de tekst. }
+      - { label: Concept, name: draft, widget: boolean, default: false, hint: Concepten staan niet op de site. }
+      - label: Tekst
+        name: body
+        widget: markdown
+        hint: "Foto toevoegen: plak de Flickr-foto-URL (flickr.com/photos/…/1234567890) op een eigen regel. 2 of 3 foto's naast elkaar: gebruik de knop 'Foto's naast elkaar'. Maximaal 30 foto's per post."

@@ -1,0 +1,24 @@
+/* Giscus theme for the Veldnotities house style: GitHub's light theme on paper, with ink and vermilion. */
+@import url('https://giscus.app/themes/light.css');
+
+main {
+  --color-canvas-default: #f3eee4;
+  --color-canvas-overlay: #f3eee4;
+  --color-canvas-inset: #ece6da;
+  --color-canvas-subtle: #ece6da;
+  --color-border-default: #d8d0bf;
+  --color-border-muted: #d8d0bf;
+  --color-fg-default: #1b1f1a;
+  --color-fg-muted: #6d6a60;
+  --color-accent-fg: #c2381f;
+  --color-accent-emphasis: #c2381f;
+  --color-btn-primary-bg: #1b1f1a;
+  --color-btn-primary-hover-bg: #c2381f;
+  --color-btn-bg: #f3eee4;
+  --color-btn-border: #d8d0bf;
+}
+
+.gsc-comment-box,
+.gsc-comment > div {
+  border-radius: 0;
+}

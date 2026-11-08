@@ -33,6 +33,17 @@ collections:
         hint: Alleen invullen als de plaats op de verkeerde plek op de kaart staat. Vul dan ook lengtegraad in.
       - { label: Lengtegraad (optioneel), name: lng, widget: number, value_type: float, required: false }
       - { label: Coverfoto (optioneel), name: cover, widget: flickr, required: false, hint: "Flickr-foto-URL, of kies er een met 'Kies uit Flickr'. Leeg = eerste foto in de tekst." }
+      - label: Feiten (optioneel)
+        name: facts
+        widget: list
+        required: false
+        max: 6
+        label_singular: Feit
+        summary: '{{fields.label}}: {{fields.value}}'
+        hint: "Korte feiten van de dag, in je eigen volgorde (slepen om te verplaatsen). Bijv. Aankomst: 8 uur bus, Hoogte: 1.495 m, Gelopen: 14 km. Maximaal 6; label tot 20 tekens, waarde tot 30. Alles is tekst: schrijf het zoals het op de site moet staan."
+        fields:
+          - { label: Label, name: label, widget: string, hint: "Bijv. 'Aankomst' of 'Temperatuur'. Maximaal 20 tekens.", maxlength: 20 }
+          - { label: Waarde, name: value, widget: string, hint: "Bijv. '8 uur bus' of '±25°'. Maximaal 30 tekens.", maxlength: 30 }
       - { label: Concept, name: draft, widget: boolean, default: false, hint: Concepten staan niet op de site. }
       - label: Tekst
         name: body
